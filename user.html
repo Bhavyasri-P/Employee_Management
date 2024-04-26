@@ -81,7 +81,26 @@
             loginPage.classList.add('hidden');
             signupPage.classList.remove('hidden');
         });
-
+        const loginForm = document.getElementById('login-form');
+        loginForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('login-email').value;
+            const password = document.getElementById('login-password').value;
+            // Perform login validation here
+            // For demonstration purposes, I'll just log the email and password to the console
+            console.log('Login Email:', email);
+            console.log('Login Password:', password);
+            // Clear the form fields after login
+            loginForm.reset();
+            // Redirect to the employee management page after successful login
+            redirectToEmployeeManagement();
+        });
+        
+        function redirectToEmployeeManagement() {
+            // You can replace this with the actual URL of your employee management section
+            window.location.href = "index.html"; // Replace "employee_management.html" with the URL of your employee management page
+        }
+        
         // Signup Form
         const signupForm = document.getElementById('signup-form');
         signupForm.addEventListener('submit', function(event) {
