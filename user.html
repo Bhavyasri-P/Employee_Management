@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <title>Employee Management System</title>
+    <style>
+        th, td {
+            border: 1px solid #ffffff;
+        }
+        td{
+            color: white;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Login Form -->
+    <div id="login-page" class="flex justify-center items-center h-screen">
+        <div class="w-96 p-8 bg-gray-900 rounded-lg">
+            <h2 class="text-white text-2xl mb-4">Login</h2>
+            <form id="login-form" class="space-y-4">
+                <div>
+                    <label class="text-white" for="login-email">Email:</label>
+                    <input id="login-email" type="email" class="block w-full mt-1 rounded-lg" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="text-white" for="login-password">Password:</label>
+                    <input id="login-password" type="password" class="block w-full mt-1 rounded-lg" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Login</button>
+            </form>
+            <p class="text-white mt-4">Don't have an account? <a href="#" id="signup-link" class="text-blue-400">Sign Up</a></p>
+        </div>
+    </div>
+
+    <!-- Signup Form -->
+    <div id="signup-page" class="hidden flex justify-center items-center h-screen">
+        <div class="w-96 p-8 bg-gray-900 rounded-lg">
+            <h2 class="text-white text-2xl mb-4">Sign Up</h2>
+            <form id="signup-form" class="space-y-4">
+                <div>
+                    <label class="text-white" for="signup-name">Name:</label>
+                    <input id="signup-name" type="text" class="block w-full mt-1 rounded-lg" placeholder="Enter your name">
+                </div>
+                <div>
+                    <label class="text-white" for="signup-email">Email:</label>
+                    <input id="signup-email" type="email" class="block w-full mt-1 rounded-lg" placeholder="Enter your email">
+                </div>
+                <div>
+                    <label class="text-white" for="signup-password">Password:</label>
+                    <input id="signup-password" type="password" class="block w-full mt-1 rounded-lg" placeholder="Enter your password">
+                </div>
+                <button type="submit" class="bg-blue-500 text-white px-4 py-2 rounded-lg">Sign Up</button>
+            </form>
+            <p class="text-white mt-4">Already have an account? <a href="#" id="login-link" class="text-blue-400">Login</a></p>
+        </div>
+    </div>
+
+    <footer class="bg-slate-800 text-white text-center p-4">
+       
+    </footer>
+
+    <script>
+        // Toggle between login and signup forms
+        const loginPage = document.getElementById('login-page');
+        const signupPage = document.getElementById('signup-page');
+        const loginLink = document.getElementById('login-link');
+        const signupLink = document.getElementById('signup-link');
+
+        loginLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            loginPage.classList.remove('hidden');
+            signupPage.classList.add('hidden');
+        });
+
+        signupLink.addEventListener('click', function(event) {
+            event.preventDefault();
+            loginPage.classList.add('hidden');
+            signupPage.classList.remove('hidden');
+        });
+
+        // Signup Form
+        const signupForm = document.getElementById('signup-form');
+        signupForm.addEventListener('submit', function(event) {
+            event.preventDefault();
+            const name = document.getElementById('signup-name').value;
+            const email = document.getElementById('signup-email').value;
+            const password = document.getElementById('signup-password').value;
+            // Perform signup validation here
+            // For demonstration purposes, I'll just log the name, email, and password to the console
+            console.log('Signup Name:', name);
+            console.log('Signup Email:', email);
+            console.log('Signup Password:', password);
+            // Clear the form fields after signup
+            signupForm.reset();
+            // Automatically switch to login page after successful signup
+            loginLink.click();
+            // Redirect to the employee management page after successful signup
+            redirectToEmployeeManagement();
+        });
+
+        function redirectToEmployeeManagement() {
+            // You can replace this with the actual URL of your employee management section
+            window.location.href = "index.html"; // Replace "employee_management.html" with the URL of your employee management page
+        }
+    </script>
+</body>
+</html>
