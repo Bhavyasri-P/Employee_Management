@@ -104,7 +104,7 @@
     }
 
     // show all the employees in the table
-    function showEmployees() {
+   function showEmployees() {
         let employees = JSON.parse(localStorage.getItem('employees'));
         let employeesTable = document.getElementById('employees');
         employeesTable.innerHTML = '';
@@ -112,8 +112,8 @@
             for (let i = 0; i < employees.length; i++) {
                 employeesTable.innerHTML += `
                     <tr>
-                        <td class="px-4 py-2">${employees[i].id}</td>
                         <td class="px-4 py-2">${employees[i].name}</td>
+                        <td class="px-4 py-2">${employees[i].email}</td>
                         <td class="px-4 py-2">${employees[i].phone}</td>
                         <td class="px-4 py-2">${employees[i].job}</td>
                         <td class="px-4 py-2  flex justify-center gap-2">
